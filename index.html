@@ -121,6 +121,7 @@
     perspective:500px;
     width:56px;height:36px;
     display:flex;align-items:flex-end;justify-content:center;
+    overflow:hidden;
   }
   .nav-logo-rig{
     transform-style:preserve-3d;
@@ -144,6 +145,22 @@
   @keyframes navPulse3{0%,100%{transform:scaleY(1);}50%{transform:scaleY(1.14) translateZ(2px);}}
   @keyframes navLogoWobble{0%,100%{transform:rotateY(-14deg) rotateX(6deg);}50%{transform:rotateY(14deg) rotateX(3deg);}}
   .nav-logo-word{display:flex;flex-direction:column;line-height:1.25;}
+  /* Header logo icon "assemble" animation — each shard flies in and joins once, then stays put */
+  .nav-logo-scene .lg-piece{
+    opacity:0;
+    transform-box:fill-box;
+    transform-origin:center;
+    animation:navLogoJoin .9s cubic-bezier(.22,.9,.24,1) forwards;
+  }
+  .nav-logo-scene .lg-p1{ --tx:-40px; --ty:-28px; --tr:-50deg; animation-delay:0s; }
+  .nav-logo-scene .lg-p2{ --tx:46px;  --ty:-34px; --tr:55deg;  animation-delay:.06s; }
+  .nav-logo-scene .lg-p3{ --tx:-48px; --ty:32px;  --tr:-40deg; animation-delay:.12s; }
+  .nav-logo-scene .lg-p4{ --tx:42px;  --ty:36px;  --tr:45deg;  animation-delay:.18s; }
+  .nav-logo-scene .lg-p5{ --tx:0px;   --ty:-42px; --tr:20deg;  animation-delay:.24s; }
+  @keyframes navLogoJoin{
+    0%{opacity:0; transform:translate(var(--tx),var(--ty)) rotate(var(--tr)) scale(.4);}
+    100%{opacity:1; transform:translate(0,0) rotate(0deg) scale(1);}
+  }
   .nav-logo-word .nlw-name{font-family:var(--mono);font-weight:700;font-size:15px;color:var(--text);letter-spacing:1.5px;text-transform:uppercase;}
   .nav-logo-word .nlw-tag{font-family:var(--serif);font-weight:500;font-size:10px;letter-spacing:5.6px;color:var(--accent);margin-top:3px;}
 
@@ -360,6 +377,7 @@
     padding:20px 12px;
     overflow:hidden;
     box-sizing:border-box;
+    perspective:1400px;
   }
   .wordmark-glow{
     position:absolute;
@@ -375,6 +393,24 @@
     width:100%;
     max-width:1000px;
     height:auto;
+  }
+  /* Logo icon "assemble" animation — each shard flies in and joins fast, then loops */
+  .wordmark-logo-icon .lg-piece{
+    opacity:0;
+    transform-box:fill-box;
+    transform-origin:center;
+    animation:logoJoin 1.8s cubic-bezier(.22,.9,.24,1) infinite;
+  }
+  .wordmark-logo-icon .lg-p1{ --tx:-260px; --ty:-180px; --tr:-50deg; animation-delay:0s; }
+  .wordmark-logo-icon .lg-p2{ --tx:300px;  --ty:-230px; --tr:55deg;  animation-delay:.06s; }
+  .wordmark-logo-icon .lg-p3{ --tx:-320px; --ty:220px;  --tr:-40deg; animation-delay:.12s; }
+  .wordmark-logo-icon .lg-p4{ --tx:280px;  --ty:260px;  --tr:45deg;  animation-delay:.18s; }
+  .wordmark-logo-icon .lg-p5{ --tx:0px;    --ty:-300px; --tr:20deg;  animation-delay:.24s; }
+  @keyframes logoJoin{
+    0%{opacity:0; transform:translate(var(--tx),var(--ty)) rotate(var(--tr)) scale(.4);}
+    22%{opacity:1; transform:translate(0,0) rotate(0deg) scale(1);}
+    78%{opacity:1; transform:translate(0,0) rotate(0deg) scale(1);}
+    100%{opacity:0; transform:translate(var(--tx),var(--ty)) rotate(var(--tr)) scale(.4);}
   }
 
   #bg3d, #bg3d-2{
@@ -404,19 +440,19 @@
     <a class="nav-logo" href="index.html" onclick="location.reload(); return false;">
       <div class="nav-logo-scene">
         <div class="nav-logo-scene"
-          style="width: 80px; height: 35px; display: flex; align-items: center; justify-content: center;">
+          style="width: 80px; height: 35px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
           <svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" style="width: 100px; height: 100px;">
             <!-- Navy "C" -->
-            <polygon fill="#5fe3a3"
+            <polygon class="lg-piece lg-p1" fill="#5fe3a3"
               points="282,616 299.75,648 319,674.75 341.5,699.25 368,721.75 391.5,737.5 422,753.25 454,765 490.25,773.25 529.25,776.5 561.75,775 596,769.25 629.75,759 661,745 689.5,727.75 714.25,708.5 739,684 732.75,674.5 685.5,633.75 647,668 602.25,691 553,702.25 527.5,703.25 501,700.75 458.25,689 425.75,672.5 393.5,647.5 366.5,616" />
-            <polygon fill="#5fe3a3"
+            <polygon class="lg-piece lg-p2" fill="#5fe3a3"
               points="558.25,226.5 607.25,312.75 639.5,328.75 668.5,350.5 692.5,376.25 713.25,408.75 778.5,375.5 760.75,345.5 741.75,320.75 716.75,295.25 691.5,275.25 661.75,257 629.25,242.5 593,231.75" />
-            <polygon fill="#5fe3a3"
+            <polygon class="lg-piece lg-p3" fill="#5fe3a3"
               points="523,225.5 490,228.5 462.5,234.25 414.25,252 386.5,267.25 363.25,283.5 323.25,321.75 304.75,346 290,370.5 276.5,399.5 267.75,425.5 261.5,452.5 257.75,484 257.5,513 260.5,542.5 335,542.5 330.75,510.5 333.25,467.5 342.75,431.5 358,399 378.5,370 408.75,341 437.75,322.25 477.5,306.25" />
         
             <!-- Gold "A" -->
-            <polygon fill="#ffffff" points="540.25,195.25 366.5,503.5 439.25,503.5 551.5,391.5 792.25,766.5 865.25,767" />
-            <polygon fill="#ffffff" points="232,543 271.25,615.5 551.5,615.5 590.5,543" />
+            <polygon class="lg-piece lg-p4" fill="#ffffff" points="540.25,195.25 366.5,503.5 439.25,503.5 551.5,391.5 792.25,766.5 865.25,767" />
+            <polygon class="lg-piece lg-p5" fill="#ffffff" points="232,543 271.25,615.5 551.5,615.5 590.5,543" />
           </svg>
         </div>
         
@@ -722,16 +758,16 @@
       </defs>
  
       <foreignObject x="0" y="-10" width="220" height="150">
-        <div xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-          <svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" style="width: 300px; height: 300px;">
+        <div xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; perspective: 700px;">
+          <svg class="wordmark-logo-icon" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" style="width: 300px; height: 300px;">
             <!-- Navy "C" -->
-            <polygon fill="#5fe3a3" points="282,616 299.75,648 319,674.75 341.5,699.25 368,721.75 391.5,737.5 422,753.25 454,765 490.25,773.25 529.25,776.5 561.75,775 596,769.25 629.75,759 661,745 689.5,727.75 714.25,708.5 739,684 732.75,674.5 685.5,633.75 647,668 602.25,691 553,702.25 527.5,703.25 501,700.75 458.25,689 425.75,672.5 393.5,647.5 366.5,616" />
-            <polygon fill="#5fe3a3" points="558.25,226.5 607.25,312.75 639.5,328.75 668.5,350.5 692.5,376.25 713.25,408.75 778.5,375.5 760.75,345.5 741.75,320.75 716.75,295.25 691.5,275.25 661.75,257 629.25,242.5 593,231.75" />
-            <polygon fill="#5fe3a3" points="523,225.5 490,228.5 462.5,234.25 414.25,252 386.5,267.25 363.25,283.5 323.25,321.75 304.75,346 290,370.5 276.5,399.5 267.75,425.5 261.5,452.5 257.75,484 257.5,513 260.5,542.5 335,542.5 330.75,510.5 333.25,467.5 342.75,431.5 358,399 378.5,370 408.75,341 437.75,322.25 477.5,306.25" />
+            <polygon class="lg-piece lg-p1" fill="#5fe3a3" points="282,616 299.75,648 319,674.75 341.5,699.25 368,721.75 391.5,737.5 422,753.25 454,765 490.25,773.25 529.25,776.5 561.75,775 596,769.25 629.75,759 661,745 689.5,727.75 714.25,708.5 739,684 732.75,674.5 685.5,633.75 647,668 602.25,691 553,702.25 527.5,703.25 501,700.75 458.25,689 425.75,672.5 393.5,647.5 366.5,616" />
+            <polygon class="lg-piece lg-p2" fill="#5fe3a3" points="558.25,226.5 607.25,312.75 639.5,328.75 668.5,350.5 692.5,376.25 713.25,408.75 778.5,375.5 760.75,345.5 741.75,320.75 716.75,295.25 691.5,275.25 661.75,257 629.25,242.5 593,231.75" />
+            <polygon class="lg-piece lg-p3" fill="#5fe3a3" points="523,225.5 490,228.5 462.5,234.25 414.25,252 386.5,267.25 363.25,283.5 323.25,321.75 304.75,346 290,370.5 276.5,399.5 267.75,425.5 261.5,452.5 257.75,484 257.5,513 260.5,542.5 335,542.5 330.75,510.5 333.25,467.5 342.75,431.5 358,399 378.5,370 408.75,341 437.75,322.25 477.5,306.25" />
 
             <!-- Gold "A" -->
-            <polygon fill="#ffffff" points="540.25,195.25 366.5,503.5 439.25,503.5 551.5,391.5 792.25,766.5 865.25,767" />
-            <polygon fill="#ffffff" points="232,543 271.25,615.5 551.5,615.5 590.5,543" />
+            <polygon class="lg-piece lg-p4" fill="#ffffff" points="540.25,195.25 366.5,503.5 439.25,503.5 551.5,391.5 792.25,766.5 865.25,767" />
+            <polygon class="lg-piece lg-p5" fill="#ffffff" points="232,543 271.25,615.5 551.5,615.5 590.5,543" />
           </svg>
         </div>
       </foreignObject>
