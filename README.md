@@ -181,11 +181,11 @@ I'm open to opportunities in:
 
 If you're working on **AI agents, RAG, LLM applications, automation, or data-driven products**, I'd love to connect and collaborate.
 
-🌐 Portfolio: https://akbarhusainc.vercel.app/
+💼 **LinkedIn:** [akbarhusain429](https://www.linkedin.com/in/akbarhusain429)
 
-💼 LinkedIn: [Connect with me on LinkedIn](https://www.linkedin.com/)
+📧 **Email:** [akbarhusainc29@gmail.com](mailto:akbarhusainc29@gmail.com)
 
-📧 Email: [akbarhusainc29@gmail.com](mailto:akbarhusainc29@gmail.com)
+🌐 **Portfolio:** https://akbarhusainc.vercel.app/
 
 <img width="1508" height="1079" alt="image" src="https://github.com/user-attachments/assets/f60de132-c120-4229-8380-999b813c86eb" />
 
