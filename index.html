@@ -256,9 +256,11 @@
   }
   p.section-sub{color:var(--text-dim);max-width:60ch;margin-bottom:48px;font-size:15px;}
  
-  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;}
-  @media(max-width:800px){.about-grid{grid-template-columns:1fr;}}
-  .about-grid p{color:var(--text-dim);font-size:15.5px;margin-bottom:16px;}
+  .about-grid-extended{display:grid;grid-template-columns:1fr 374.7px;gap:48px;align-items:start;}
+  @media(max-width:800px){.about-grid-extended{grid-template-columns:1fr;}}
+  @media(max-width:800px){.about-grid-extended .profile-card{order:-1;margin:0 auto;}}
+  .about-grid-extended p{color:var(--text-dim);font-size:15.5px;margin-bottom:16px;}
+  .about-grid-extended > div:first-child{margin-top:0;}
   .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px;}
   @media(max-width:480px){.stat-row{grid-template-columns:1fr 1fr;}}
   @media(max-width:360px){.stat-row{grid-template-columns:1fr;}}
@@ -343,6 +345,50 @@
   .addr-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex-shrink:0;}
   .map-container iframe{width:100%;}
   @media(max-width:600px){.map-container iframe{height:340px !important;}}
+
+  /* ---- Profile card (About section) ---- */
+  .profile-card{
+    width:374.7px;
+    height:486px;
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:32px 28px;
+    background:var(--bg-1);
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    transition:border-color .2s ease;
+    box-sizing:border-box;
+    overflow:hidden;
+  }
+  @media(max-width:800px){.profile-card{width:100%;max-width:374.7px;height:auto;min-height:486px;}}
+  .profile-card:hover{border-color:var(--line-strong);}
+  .profile-avatar-wrap{
+    width:140px;height:140px;border-radius:50%;
+    overflow:hidden;
+    border:2px solid var(--accent);
+    box-shadow:0 0 0 6px var(--accent-deep);
+    margin-bottom:20px;
+    background:var(--bg-2);
+    flex-shrink:0;
+  }
+  .profile-avatar-wrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .profile-card h3{
+    font-family:var(--serif);font-size:19px;font-weight:600;margin-bottom:6px;
+  }
+  .profile-card .role-sub{
+    font-family:var(--mono);font-size:12px;color:var(--accent);
+    text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px;
+  }
+  .profile-card .bio-text{
+    color:var(--text-dim);font-size:14px;line-height:1.7;margin-bottom:24px;max-width:34ch;
+  }
+  .profile-card-actions{
+    display:flex;flex-wrap:wrap;justify-content:center;gap:10px;
+  }
+  .profile-card-actions .btn{gap:7px;}
  
   footer{padding:0px 0 32px;position:relative;overflow:hidden;}
   .foot-top{
@@ -509,18 +555,36 @@
  
 <section id="about">
   <div class="wrap">
-    <div class="eyebrow">01 - About</div>
-    <h2 class="section-title reveal">Detail-oriented, systems-minded, audience-aware</h2>
-    <div class="about-grid">
+    <div class="eyebrow">01 - About & Career Journey</div>
+    <h2 class="section-title reveal">The Journey Behind the Code</h2>
+    <p class="section-sub reveal">A narrative of growth across data engineering, machine learning systems, and intelligent automation.</p>
+    
+    <div class="about-grid-extended">
+      <!-- Career Life & Narrative -->
       <div class="reveal">
-        <p>I design and build data and AI systems end to end - from cleaning a messy dataset to indexing a vector store to routing an agentic workflow - and I care just as much about explaining the "why" behind each decision as building the thing itself.</p>
-        <p>My work spans two disciplines that reinforce each other: classic data analysis (SQL, Excel, Tableau, Power BI) that turns raw numbers into business decisions, and generative AI engineering (RAG, LangChain-style pipelines, n8n automations) that turns unstructured knowledge into reliable answers.</p>
-      </div>
-      <div class="reveal">
+        <p>My journey into technology started with a fascination for how data can tell a story and how intelligent systems can automate complex human workflows. Over the years, this curiosity evolved into a deep dedication to building robust RAG pipelines, AI agents, and high-performance BI dashboards.</p>
+        <p>Having completed my Master of Science Information Technology, Ahmedabad and building practical experience through data science internships, I've bridged the gap between raw, messy datasets and production-grade AI solutions. I don't just write code; I design systems that retrieve accurately, reason logically, and explain their decisions clearly to both developers and business stakeholders.</p>
+        <p>Whether it's deploying automated feedback routing via n8n, optimizing vector embeddings with LlamaIndex, or building clean interactive dashboards in Tableau and Power BI, my focus remains squarely on impact, scalability, and clarity.</p>
+        
         <div class="stat-row">
           <div class="stat"><div class="num">100K+</div><div class="lab">Records analyzed in EDA</div></div>
           <div class="stat"><div class="num">30%</div><div class="lab">Faster decisions via dashboards</div></div>
           <div class="stat"><div class="num">15%</div><div class="lab">ML accuracy improvement</div></div>
+        </div>
+      </div>
+      <div class="reveal profile-card">
+        <div class="profile-avatar-wrap">
+          <!-- Replace your-photo.jpg with your actual image path -->
+          <img src="Akbarhusain.jpg" alt="Akbarhusain Chaudhary">
+        </div>
+         <h3>AKBARHUSAIN CHAUDHARY</h3>
+        <div class="role-sub">AI Engineer, Agent & Data Scientist</div>
+        <p class="bio-text">Bridging raw data and generative AI to design intelligent agents, robust RAG pipelines, and high-performance systems.</p>
+        <div class="profile-card-actions">
+          <a href="https://linkedin.com/in/Akbarhusain429" target="_blank" class="btn btn-ghost" style="padding: 8px 14px; font-size: 12px;"><i class="fa-brands fa-linkedin-in"></i> LinkdIn</a>
+          <a href="https://github.com/Akbarhusain429" target="_blank" class="btn btn-ghost" style="padding: 8px 14px; font-size: 12px;"><i class="fa-brands fa-github"></i> GitHub</a>
+          <a href="https://public.tableau.com/app/profile/akbarhusain.chaudhary/vizzes" target="_blank" class="btn btn-ghost" style="padding: 2px 14px; font-size: 12px;"><img src="TB.png" style="width: 15px; height: 15px; object-fit: contain; filter: grayscale(1) brightness(1.6);"> Tableau</a>
+          <a href="https://x.com/AkbarH429" target="_blank" class="btn btn-ghost" style="padding: 8px 14px; font-size: 12px;"><i class="fa-brands fa-twitter"></i> X</a>
         </div>
       </div>
     </div>
